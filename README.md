@@ -13,7 +13,7 @@ By default, keepwritings uses focuswriter as the editor, because it has a nice, 
 
 ### Installation
 #### The easy way
-`git clone https://github.com/Antithesisx/keepwritings.git && sudo sh install.sh`
+`git clone https://github.com/Antithesisx/keepwritings.git && sudo ./keepwritings/install.sh`
 
 On a Debian-based system, the installer will take care of everything. On other systems, you'll just need to install the dependencies manually. The installer must be run as root in order to place the scripts in your PATH.
 

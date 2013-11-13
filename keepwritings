@@ -1,22 +1,27 @@
 #!/bin/bash
 
 # Variables you might want to change.
-editor='gedit'
+editor='focuswriter'
+location='~/.config/keepwritings'
 
 # Set date.
 date=$(date +"%a %Y-%m-%d %R")
 filename=$date
 
-# Installation. Only relevant when run for the first time.
-if [[ ! -d ~/.config/keepwritings ]]
-	then mkdir -p ~/.config/keepwritings/history
+# cd to the directory where the magic happens.
+cd "$location"
+
+# Clean up leftovers from last time.
+if
+	[[ -f current.txt ]]
+	then rm current.txt
 fi
 
 # Make a writing, and keep it.
-cd ~/.config/keepwritings
-rm current.txt
 $editor current.txt
 xclip current.txt
 cat current.txt >> "history/$filename.txt"
 sed -i "s/^/$date: /" "history/$filename.txt"
 
+# Optionally, you can have the text pasted automatically after you quit the editor. Discouraged, as it can be annoying if you don't focus the appropriate text field before launching keepwritings. To enable, uncomment the following line.
+#xte "str $(xclip -o)"
