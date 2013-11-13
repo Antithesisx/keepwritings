@@ -9,7 +9,7 @@ By default, keepwritings uses focuswriter as the editor, because it has a nice, 
 
 ### Usage
 
-`keepwritings` will launch the editor. Just close it when you are done, and the text will be in your clipboard, ready to be pasted. `recall` will launch a dmenu presenting all your previous writings. One entry per line. You can filter them by date or content. After you've made a selection, the file containing that line (i.e. the whole writing) will be copied to your clipboard. Thus, you only need to recall a fraction of a writing to access it.
+`keepwritings` will launch the editor. Just close it when you are done, and the text will be in your clipboard, ready to be pasted. `recall` will launch a dmenu presenting all your previous writings. One entry per line. You can filter them by date or content. After you've made a selection, the file containing that line (i.e. the whole writing) will be copied to your clipboard.
 
 ### Installation
 #### The easy way
