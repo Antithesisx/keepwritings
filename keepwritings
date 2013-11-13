@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# Variables you might want to change.
+terminal='xterm -e'
+editor='vim'
+
+# Set date.
+date=$(date +"%a %Y-%m-%d %R")
+filename=$date
+
+# Installation. Only relevant when run for the first time.
+if [[ ! -d ~/.config/keepwritings ]]
+	then mkdir -p ~/.config/keepwritings/history
+fi
+
+# Make a writing, and keep it.
+cd ~/.config/keepwritings
+rm current.txt
+$terminal $editor current.txt
+xclip current.txt
+cat current.txt >> "history/$filename.txt"
+sed -i "s/^/$date: /" "history/$filename.txt"
+

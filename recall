@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# Recall.
+date=$(cat ~/.config/keepwritings/history/* | dmenu -i -b -l 30 | cut -c -20)
+cd ~/.config/keepwritings/history/
+cat "$date.txt" | cut -c 23- | xclip
