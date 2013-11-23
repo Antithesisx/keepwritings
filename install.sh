@@ -12,6 +12,7 @@ cp keepwritings recall /usr/local/bin
 # Create the directories necessary for the scripts to operate.
 if [[ ! -d ~/.config/keepwritings ]]
 	then mkdir -p ~/.config/keepwritings/history
+	touch ~/.config/keepwritings/current.txt
 fi
 
 # Install the dependencies.
