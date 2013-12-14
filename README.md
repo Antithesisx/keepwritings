@@ -1,15 +1,21 @@
 keepwritings
 ============
 
-Never lose your writings again, and have quick access to all your writings all the time. Be it an email, an essay or a forum post. It has two uses:
-- If the web browser crashes while you're in the middle of writing something in a web page's text field, your data is lost. Keepwritings prevents this by giving you quick access to an external editor, and copyting that text to the clipboard after you're done.
-- The writing is also stored on your hard disk and a dmenu-based interface is provided for quick access. If you ever need access to something you've written in the past, you won't need to spend time browsing the web for that one post; you'll have a local copy -- much like how you keep all your sent emails in your Sent folder. With keepwritings, you can get back any of your writings instantly, simply by recalling a pattern that appears inside the text.
+Never lose your writings again, and have quick access to all your writings all the time. Be it an email, an essay or a forum post.
 
-Instead of passing text input directly to a program, it gets procesed by keepwritings first, which will store the text on your hard drive. Yes, you can just launch a text editor manually, but then you'll have to worry about where to store the file, browse to that directory, create it if needed, etc. It's much more inviting to just start typing in a text field on a web page, making you vulnerable to losing your data again. The point of keepwritings is to provide quick access to an external editor, take care of where to store the data. In addition, it provides a tool to give quick access to all writings you've ever written.
+### Informal but simple explanation
 
-There are few programs beside an email client that keep track of your writings. But we feed our important data not only to email clients. Sometimes a company's Contact page will provide a text form rather than an email address. When typing there, the data will not be stored, simply because it wasn't written in an email client. The UNIX philosophy is: do one thing, and do it well. Rather than relying on all different programs to store your important writings (and be damned if they don't), keepwritings stores them all centrally.
+Basically, I didn't like how only email clients keep a Sent folder and not, say, your web browser. I've lost way too many writings I've typed out in web forms, and some of them were very important. So I've decided to utilize the UNIX philosophy. Keepwritings is a program that will launch a text editor so it can take your input, then store that writing inside ~/.config/keepwritings/history/[current date / time].txt (or any other directory you choose), then copy the contents of that file to your clipboard.
+
+Recall is a program that will look inside all writings inside that directory, take all lines of all those files, and pipe them to dmenu. When you select a line, it takes the content of the appropriate file and copy it to your clipboard. In other words: you have instant access to the contents of anything you've ever written, simply by recalling a few words that appeared inside it. It also prepends the dates, so if you only remember when it was written, that should also be enough.
+
+The idea is that, instead of typing something directly in a form provided by a program, you type it in the text editor provided by the script first, let it take care of storing and organizing it, and then you paste it to the field where you wanted to type it in the first place. For example, I'm using it write now to type this post, because I might want to repost this. You can also use it simply to quickly take a note of something and you don't want to think about where you're going to store the file.
 
 By default, keepwritings uses focuswriter as the editor, because it has a nice, distraction-free user interface. You can replace this by gvim or gedit or whatever you prefer.
+
+### Motivation
+
+There are few programs beside an email client that keep track of your writings. But we feed our important data not only to email clients. Sometimes a company's Contact page will provide a text form rather than an email address. When typing there, the data will not be stored, simply because it wasn't written in an email client. The UNIX philosophy is: do one thing, and do it well. Rather than relying on all different programs to store your important writings (if they do so at all), keepwritings stores them all centrally.
 
 ### Usage
 
@@ -26,10 +32,12 @@ If you don't want to entrust root privlidges to the script, or you want to chang
 
 `git clone https://github.com/Antithesisx/keepwritings.git`
 
-and edit install.sh before launching it. You can change the PATH or change the package manager (on non-Debian systems). If you want to store your writings in a different location, you'll need to edit the installer as well as the scripts. The editor can also be set in the keepwritings script.
+and edit install.sh before launching it. Basically, the installation instructions are inside that script.
+
+You can change the PATH or change the package manager (on non-Debian systems). If you want to store your writings in a different location, you'll need to edit the installer as well as the scripts. The editor can also be set in the keepwritings script.
 
 ### Dependencies
 - focuswriter 
-- suckless-tools 
+- dmenu
 - xclip
 - xautomation (optional, if you want to automatically paste the writing.)
