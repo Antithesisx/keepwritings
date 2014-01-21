@@ -34,4 +34,4 @@ and edit install.sh before launching it. You can change the PATH or change the p
 ### Dependencies
 - [scribe](https://github.com/Antithesisx/scribe) 
 - suckless-tools (or just dmenu)
-- xclip (optional, if you want to automatically copy a writing to the clipboard after saving it.)
+- xclip (optional, if you want to automatically copy a writing to the clipboard after saving it.) 
