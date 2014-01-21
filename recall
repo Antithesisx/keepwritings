@@ -1,6 +1,15 @@
 #!/bin/bash
 
+cd "$HOME/.config/keepwritings/history/" # Go to where the magic happens.
+files=$(ls | grep -i .txt$)
+
+for file in $files
+do
+	withdate="$(cat "$file" | xargs -I {} echo "$file {}")"$'\n'
+  	all="$all""$withdate"
+done
+
 # Recall.
-date=$(cat ~/.config/keepwritings/history/* | dmenu -i -b -l 30 | cut -c -20)
-cd ~/.config/keepwritings/history/
-cat "$date.txt" | cut -c 23- | xclip
+date="$(echo "$all" | dmenu -i -b -l 30 | cut -c -20)"
+scribe "$date.txt"
+# xclip "$date.txt" # Uncomment this if you want to automatically load the writing into memory after saving it.

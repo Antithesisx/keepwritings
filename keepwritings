@@ -1,15 +1,21 @@
 #!/bin/bash
-
 # Variables you might want to change.
-editor='focuswriter'
-location='~/.config/keepwritings'
+editor='scribe'
+location="$HOME/.config/keepwritings"
+originaldir="$PWD"
+
+# Check for arguments
+if [[ $# -gt 1 ]]; then
+	echo "Keepwritings doesn't take more than one argument."
+	exit.
+fi
 
 # Set date.
-date=$(date +"%a %Y-%m-%d %R")
-filename=$date
+date="$(date +"%a-%Y-%m-%d-%R")"
+filename="$date"
 
 # cd to the directory where the magic happens.
-cd "$location"
+cd $location
 
 # Clean up leftovers from last time.
 if
@@ -18,10 +24,14 @@ if
 fi
 
 # Make a writing, and keep it.
-$editor current.txt
-xclip current.txt
-cat current.txt >> "history/$filename.txt"
-sed -i "s/^/$date: /" "history/$filename.txt"
+touch "history/$filename.txt"
+$editor "history/$filename.txt"
+# xclip "history/$filename.txt" # Optional feature. Uncomment this if you want to automatically load writings into the clipboard after saving them.
+# sed -i "s/^/$date: /" "history/$filename.txt" # Embeds date inside the file itself. Don't use; lame.
+echo "" >> "history/$filename.txt"
+if [[ $# -eq 1 ]]; then
+	ln -T "$HOME/.config/keepwritings/history/$filename.txt" "$originaldir/$1"
+fi
 
 # Optionally, you can have the text pasted automatically after you quit the editor. Discouraged, as it can be annoying if you don't focus the appropriate text field before launching keepwritings. To enable, uncomment the following line.
 #xte "str $(xclip -o)"
