@@ -14,6 +14,10 @@ Practical uses:
 - Building a scrapbook. Find an interesting article or inspiring quote on the Internet? Just open keepwritings and paste it there.
 - Instant access to anything you've ever read or written, just by recalling a few words from it.
 
+### Motivation
+
+There are few programs beside an email client that keep track of your writings. But we feed our important data not only to email clients. Sometimes a company's Contact page will provide a text form rather than an email address. When typing there, the data will not be stored, simply because it wasn't written in an email client. The UNIX philosophy is: do one thing, and do it well. Rather than relying on all different programs to store your important writings (if they do so at all), keepwritings stores them all centrally.
+
 ### Usage
 
 `keepwritings` will launch the editor. Just close it when you are done, and the text will be in your clipboard, ready to be pasted. `recall` will launch a dmenu presenting all your previous writings. One entry per line. You can filter them by date or content. After you've made a selection, the file containing that line (i.e. the whole writing) will be copied to your clipboard. For quick access, you might want to use a launcher. For most desktop environments, the shortcut for this is alt+F2.
@@ -29,7 +33,9 @@ If you don't want to entrust root privlidges to the script, or you want to chang
 
 `git clone https://github.com/Antithesisx/keepwritings.git`
 
-and edit install.sh before launching it. You can change the PATH or change the package manager (on non-Debian systems). If you want to store your writings in a different location, you'll need to edit the installer as well as the scripts. The editor can also be set in the keepwritings script.
+and edit install.sh before launching it. Basically, the installation instructions are inside that script.
+
+You can change the PATH or change the package manager (on non-Debian systems). If you want to store your writings in a different location, you'll need to edit the installer as well as the scripts. The editor can also be set in the keepwritings script.
 
 ### Dependencies
 - [scribe](https://github.com/Antithesisx/scribe) 
