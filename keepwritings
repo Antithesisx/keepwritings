@@ -1,7 +1,7 @@
 #!/bin/bash
 # Variables you might want to change.
 editor='scribe'
-location="$HOME/.config/keepwritings"
+location="$HOME/.config/keepwritings/history"
 originaldir="$PWD"
 
 # Check for arguments
@@ -17,20 +17,13 @@ filename="$date"
 # cd to the directory where the magic happens.
 cd $location
 
-# Clean up leftovers from last time.
-if
-	[[ -f current.txt ]]
-	then rm current.txt
-fi
-
 # Make a writing, and keep it.
-touch "history/$filename.txt"
-$editor "history/$filename.txt"
-# xclip "history/$filename.txt" # Optional feature. Uncomment this if you want to automatically load writings into the clipboard after saving them.
-# sed -i "s/^/$date: /" "history/$filename.txt" # Embeds date inside the file itself. Don't use; lame.
-echo "" >> "history/$filename.txt"
+$editor "$filename"
+# xclip "$filename" # Optional feature. Uncomment this if you want to automatically load writings into the clipboard after saving them.
+# sed -i "s/^/$date: /" "$filename" # Embeds date inside the file itself. Don't use; lame.
+echo "" >> "$filename"
 if [[ $# -eq 1 ]]; then
-	ln -T "$HOME/.config/keepwritings/history/$filename.txt" "$originaldir/$1"
+	ln -s -T "$HOME/.config/keepwritings/history/$filename/" "$originaldir/$1"
 fi
 
 # Optionally, you can have the text pasted automatically after you quit the editor. Discouraged, as it can be annoying if you don't focus the appropriate text field before launching keepwritings. To enable, uncomment the following line.
