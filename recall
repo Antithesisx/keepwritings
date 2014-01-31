@@ -5,7 +5,7 @@ dirs="$(ls -d */ | sed 's/\///')"
 
 for dir in $dirs
 do
-	withdate="$(cat "$dir/$dir" | xargs -I {} echo "$dir {}")"$'\n'
+	withdate="$(cat "$dir/$dir" | xargs -0 -I {} echo "$dir {}")"$'\n'
 	all="$all""$withdate"
 done
 
