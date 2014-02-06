@@ -1,18 +1,17 @@
 #!/bin/bash
 
 cd "$HOME/.config/keepwritings/history/" # Go to where the magic happens.
-dirs="$(ls -d */ | sed 's/\///')"
+dirs="$(ls -d */ | sed 's/\///')" # $dirs is a variable containing all directories in that directories. The sed function removes the slashes.
 
+# $all is a variable containing the contents of all files in the subdirectories of the current location, with the filenames (in this case, the dates) prepended to them.
 for dir in $dirs
 do
-	withdate="$(cat "$dir/$dir" | xargs -0 -I {} echo "$dir {}")"$'\n'
+	withdate="$(sed -e "s/^/"$dir" /" "$dir/$dir")"$'\n'
 	all="$all""$withdate"
 done
 
 
-# Recall.
-date="$(echo "$all" | dmenu -i -b -l 30 | cut -c -20)"
-if [[ ! $date -eq 0 ]]; then
-	scribe "$date"
-fi
+# Extract the first 20 characters from the chosen entry, because those are the filename. Then, open it with scribe.
+date="$(echo "$all" | dmenu -i -b -l 30 | cut -c -20)" 
+scribe "$date"
 # xclip "$date" # Uncomment this if you want to automatically load the writing into memory after saving it.
