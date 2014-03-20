@@ -16,7 +16,9 @@ Practical uses:
 
 ### Usage
 
-`keepwritings` will launch the editor. Each time you save it, a new copy will be created. `recall` will launch a dmenu presenting all your previous writings, one entry per line. You can filter them by date or content. After you've made a selection, the file containing that line will be opened in your text editor of choice. For quick access, you might want to use a launcher. For most desktop environments, the shortcut for this is alt+F2.
+`keepwritings` will launch the editor. Each time you save it, a new copy will be created. `recall` will launch a dmenu presenting all your previous writings, one entry per line. You can filter them by date or content. After you've made a selection, the file containing that line will be opened in your text editor of choice.
+
+The point of keepwritings is that you have quick access to it. For this reason, I recommend binding a keyboard shortcut to it. There are lightweight, universal tools like xbindkeys, but if you're using a Desktop Environment, chances are there's already an option for it.
 
 ### Installation
 #### The easy way
