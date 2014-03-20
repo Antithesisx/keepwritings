@@ -40,6 +40,10 @@ cd Revcontrol
 chmod +x revcontrol
 cp revcontrol "$installdir"
 
+# Configure scribe
+cd "$installdir"
+nano scribe
+
 # Notify the user of other dependencies they need to install.
 error() {
 echo "$(basename "$0"):" "error:" "$@" 1>&2
