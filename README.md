@@ -20,18 +20,10 @@ Practical uses:
 
 ### Installation
 #### The easy way
-`git clone https://github.com/Antithesisx/keepwritings.git && sudo ./keepwritings/install.sh`
 
-On a Debian-based system, the installer will take care of everything. On other systems, you'll just need to install the dependencies manually. The installer must be run as root in order to place the scripts in your PATH.
+`git clone https://github.com/Antithesisx/keepwritings.git ; cd keepwritings ; ./install.sh`
 
-#### The hard way
-If you don't want to entrust root privlidges to the script, or you want to change the configuration, just do
-
-`git clone https://github.com/Antithesisx/keepwritings.git`
-
-and edit install.sh before launching it. Basically, the installation instructions are inside that script.
-
-You can change the PATH or change the package manager (on non-Debian systems). If you want to store your writings in a different location, you'll need to edit the installer as well as the scripts. The editor can also be set in the keepwritings script.
+It will run an interactive installer that will do most things for you. You can check out the script if you don't trust it.
 
 ### Dependencies
 - [scribe](https://github.com/Antithesisx/scribe) 
